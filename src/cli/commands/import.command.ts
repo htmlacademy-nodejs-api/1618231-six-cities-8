@@ -20,6 +20,7 @@ export class ImportCommand implements Command {
       }
 
       console.error(`Can't import data from file: ${fileName}`);
-      console.error(`Details: ${err.message}`)}
+      console.error(`Details: ${err.message}`);
+    }
   }
 }
