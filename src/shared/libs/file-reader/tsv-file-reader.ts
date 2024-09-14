@@ -75,7 +75,7 @@ export class TVSFileReader implements IFileReader {
     const [latitude, longitude] = location.split(';');
     return {
       latitude,
-      longitude
+      longitude,
     };
   }
 
