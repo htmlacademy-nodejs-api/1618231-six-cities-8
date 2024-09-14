@@ -22,7 +22,7 @@ export class VersionCommand implements Command {
     const jsonContent = readFileSync(resolve(this.filePath), { encoding: 'utf-8' });
     const importedContent = JSON.parse(jsonContent);
 
-    if (isPackageJSOnConfig(importedContent)) {
+    if (!isPackageJSOnConfig(importedContent)) {
       throw new Error('Failed to parse json content.');
     }
 

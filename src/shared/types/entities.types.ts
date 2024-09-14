@@ -3,7 +3,7 @@ export interface IUser {
   email: string;
   avatar: string;
   password: string;
-  userType: string;
+  userType: 'normal' | 'pro';
 }
 
 export interface IComments {
@@ -13,28 +13,29 @@ export interface IComments {
   author: IUser;
 }
 
-export interface Location {
-  latitude: number;
-  longitude: number;
+export interface ILocation {
+  latitude: string;
+  longitude: string;
 }
 
 export interface IOffer {
   title: string;
   description: string;
-  date: string;
+  postDate: Date;
   city: string;
   previewImage: string;
   images: string[];
   isPremium: boolean;
   isFavorite: boolean;
   rating: number;
-  type: string;
+  hostType: string;
   bedrooms: number;
   quests: number;
   price: number;
-  goods: string[];
-  host: IUser;
+  features: string[];
+  author: IUser;
   comments: number;
-  location: Location;
+  location: ILocation;
 }
+
 
