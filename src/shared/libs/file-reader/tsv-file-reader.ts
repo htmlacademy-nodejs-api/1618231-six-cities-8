@@ -2,7 +2,6 @@ import { IFileReader } from './file-reader.interface.js';
 import { IOffer, IUser, ILocation } from '../../types/entities.types.js';
 import { readFileSync } from 'node:fs';
 
-
 export class TVSFileReader implements IFileReader {
 
   private rawData = '';
@@ -67,6 +66,8 @@ export class TVSFileReader implements IFileReader {
   }
 
   private parseUser(author: string): IUser {
+    console.log(author);
+
     const [name, email, avatar, password, userType] = author.split(';');
     return { name, email, avatar, password, userType: userType === 'normal' ? 'normal' : 'pro' };
   }
