@@ -2,14 +2,11 @@ import dayjs from 'dayjs';
 
 import { IOfferGenerator } from './offer-generator.interface.js';
 import { IMockServerData } from '../../types/mock-server-data.type.js';
-import { getRandomItem, generateRandomValue, getRandomItems } from '../../helpers/index.js';
+import { getRandomItem, generateRandomValue, getRandomItems, getLocationRow, getUserRow } from '../../helpers/index.js';
 import { IUser } from '../../types/entities.types.js';
-import {getLocationRow, getUserRow } from '../../helpers/common.js';
-
 
 const FIRST_WEEK_DAY = 1;
 const LAST_WEEK_DAY = 7;
-
 
 export class TSVOfferGenerator implements IOfferGenerator {
   constructor(private readonly mockData: IMockServerData) { }

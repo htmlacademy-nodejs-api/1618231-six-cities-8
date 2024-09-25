@@ -20,8 +20,8 @@ export class GenerateCommand implements Command {
   private async write(filepath: string, offerCount: number) {
     const tvsOfferGenerator = new TSVOfferGenerator(this.initialData);
     for (let i = 0; i < offerCount; i++) {
-      const row = `${tvsOfferGenerator.generate()}\n`;
-      await appendFile(filepath, row, {encoding: 'utf-8'});
+      // const row = `${tvsOfferGenerator.generate()}\n`;
+      await appendFile(filepath, `${tvsOfferGenerator.generate()}\n`, {encoding: 'utf-8'});
     }
   }
 
@@ -32,6 +32,7 @@ export class GenerateCommand implements Command {
   public async execute(...parameters: string[]): Promise<void> {
     const [count, filepath, url] = parameters;
     const offerCount = Number.parseInt(count, 10);
+
     try {
       await this.load(url);
       await this.write(filepath, offerCount);

@@ -59,3 +59,6 @@ export const getLocationRow = (city: string) => {
   return locationRow.join(';');
 };
 
+export function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : '';
+}
