@@ -1,26 +1,17 @@
+import EventEmitter from 'node:events';
+
 import { IFileReader } from './file-reader.interface.js';
 import { IOffer, IUser, ILocation } from '../../types/entities.types.js';
-import { readFileSync } from 'node:fs';
+import { createReadStream } from 'node:fs';
 
-export class TVSFileReader implements IFileReader {
+export class TVSFileReader extends EventEmitter implements IFileReader {
 
-  private rawData = '';
+  private CHUNK_SIZE = 16384;
 
   constructor(
     private readonly fileName: string
-  ) { }
-
-  private validateRowData(): void {
-    if (!this.rawData) {
-      throw new Error('File was not read');
-    }
-  }
-
-  private parseRawDataToOffers(): IOffer[] {
-    return this.rawData
-      .split('\n')
-      .filter((row) => row.trim().length > 0)
-      .map((row) => this.parseLineToOffer(row));
+  ) {
+    super();
   }
 
   private parseLineToOffer(row: string): IOffer {
@@ -80,12 +71,28 @@ export class TVSFileReader implements IFileReader {
     };
   }
 
-  public read(): void {
-    this.rawData = readFileSync(this.fileName, {encoding: 'utf-8'});
-  }
+  public async read(): Promise<void> {
+    const readStream = createReadStream(this.fileName, {
+      highWaterMark: this.CHUNK_SIZE,
+      encoding: 'utf-8',
+    });
 
-  public toArray(): IOffer[] {
-    this.validateRowData();
-    return this.parseRawDataToOffers();
+    let remainingData = '';
+    let nextLinePosition = -1;
+    let importedRowCount = 0;
+
+    for await (const chunk of readStream) {
+      remainingData += chunk.toString();
+
+      while ((nextLinePosition = remainingData.indexOf('\n')) >= 0) {
+        const completeRow = remainingData.slice(0, nextLinePosition + 1);
+        remainingData = remainingData.slice(++nextLinePosition);
+        importedRowCount++;
+
+        const parsedOffer = this.parseLineToOffer(completeRow);
+        this.emit('line', parsedOffer);
+      }
+    }
+    this.emit('end', importedRowCount);
   }
 }
