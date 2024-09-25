@@ -17,15 +17,13 @@
       "Онегин был по мненбю многих, судей решительных и строгих, ученый малый, но педант. Имел он счастливый талант без принужденья в разговоре коснуться до всего слегка с ученым видом знатока.",
       "Хранить молчанье в важном споре, и вызывать улыбки дам огнем нежданных эпиграм"
     ],
-    "publDate": [
-      "2024-09-12T08:00:00",
-      "2024-09-13T08:00:00",
-      "2024-09-18T08:00:00",
-      "2024-09-19T08:00:00",
-      "2024-09-20T08:00:00"
-    ],
     "city": [
-      "Paris", "Cologne", "Brussel", "Amsterdam", "Hamburg", "Dusseldorf"
+      "Paris",
+      "Cologne",
+      "Brussel",
+      "Amsterdam",
+      "Hamburg",
+      "Dusseldorf"
     ],
     "previewImage": [
       "https://15.design.htmlacademy.pro/static/hotel/19.jpg",
@@ -52,14 +50,22 @@
       "https://15.design.htmlacademy.pro/static/hotel/7.jpg",
       "https://15.design.htmlacademy.pro/static/hotel/8.jpg"
     ],
-    "isPremium": ["false", "true"],
-    "isFavorite": ["false", "true"],
-    "rating": ["1", "2", "3", "4", "5"],
+    "isPremium": false,
+    "isFavorite": false,
+    "rating": [1, 2, 3, 4, 5],
     "hostType": ["apartament", "house", "room", "hotel"],
-    "bedrooms": ["1", "2", "3", "4", "5"],
-    "quests": ["1", "2", "3", "4", "5"],
-    "price": ["10000","20000","30000","40000","50000","60000","70000"],
-    "features": ["Breakfast", "Air conditioning", "Laptop friendly workspace", "Baby seat", "Washer", "Towels", "Fridge"],
+    "bedrooms": [1, 2, 3, 4, 5],
+    "quests": [1, 2, 3, 4, 5],
+    "price": [10000, 20000, 30000, 40000, 50000, 60000, 70000],
+    "features": [
+      "Breakfast",
+      "Air conditioning",
+      "Laptop friendly workspace",
+      "Baby seat",
+      "Washer",
+      "Towels",
+      "Fridge"
+    ],
     "author": [
       {
         "name": "Lewis",
@@ -104,32 +110,6 @@
         "userType": "pro"
       }
     ],
-    "comments": [10],
-    "location": {
-        "Paris": {
-          "latitude": 48.85661,
-          "longitude": 2.351499
-        },
-        "Brussel": {
-          "latitude": 50.846557,
-          "longitude": 4.351697
-        },
-        "Amsterdam": {
-          "latitude": 52.370216,
-          "longitude": 4.895168
-        },
-        "Hamburg": {
-          "latitude": 53.550341,
-          "longitude": 10.000654
-        },
-        "Cologne": {
-          "latitude": 50.938361,
-          "longitude": 6.959974
-        },
-        "Dusseldorf": {
-          "latitude": 51.225402,
-          "longitude": 6.776314
-        }
-      }
+    "comments": 10
   }
 }

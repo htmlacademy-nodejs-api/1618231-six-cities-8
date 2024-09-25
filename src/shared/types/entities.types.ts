@@ -18,6 +18,10 @@ export interface ILocation {
   longitude: string;
 }
 
+export interface ICityLocation {
+  cityName: ILocation;
+}
+
 export interface IOffer {
   title: string;
   description: string;
